@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const useFetch = (endpoint, query) => {
+// Set delay to avoid api restriction error by calling the api twice in the same second
+const useFetch = (endpoint, query, delay = 0) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -18,7 +19,6 @@ const useFetch = (endpoint, query) => {
 
   const fetchData = async () => {
     setIsLoading(true);
-    console.log("fetch called")
 
     try {
       const response = await axios.request(options);
@@ -33,7 +33,9 @@ const useFetch = (endpoint, query) => {
   };
 
   useEffect(() => {
-    fetchData();
+    setTimeout(async () => {
+      fetchData();
+    }, delay)
   }, []);
 
   const refetch = () => {

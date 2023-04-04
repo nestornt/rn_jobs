@@ -6,14 +6,14 @@ import { COLORS} from '../../../constants'
 import NearbyJobCard from '../../common/cards/nearby/NearbyJobCard'
 import useFetch from "../../../hook/useFetch"
 
-const NearbyJobs = ({data}) => {
+const NearbyJobs = ({popularJobs}) => {
   console.log("🚀 ~ file: Nearbyjobs.jsx:10 ~ NearbyJobs ~ data:", data)
   
   const router = useRouter();
-  const { isLoading, error } = useFetch('search', {
+  const { data, isLoading } = useFetch('search', {
     query: 'React Native developer',
     num_pages: 1
-  });
+  }, 1500);
 
 
   return (
@@ -25,9 +25,9 @@ const NearbyJobs = ({data}) => {
         </TouchableOpacity>
       </View>
       <View style={styles.cardsContainer}>
-          {isLoading ? (
+          {isLoading || !data ? (
             <ActivityIndicator size={'large'} colors={COLORS.primary} />
-          ) :  (
+          ) : (
             data?.map((job) => (
               <NearbyJobCard
                 job={job}
