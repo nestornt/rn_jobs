@@ -1,6 +1,6 @@
 <h2><span style="font-size: 3em;">📱</span> App preview </h2>
 
-<div style="display: flex; flex-direction: row;">
+<div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
   <img src="images/image1.PNG" width="250" />
   <img src="images/image2.PNG" width="250" />
   <img src="images/image3.PNG" width="250" />
