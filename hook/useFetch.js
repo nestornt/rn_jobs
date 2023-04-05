@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { API_KEY } from "../config";
 
 // Set delay to avoid api restriction error by calling the api twice in the same second
 const useFetch = (endpoint, query, delay = 0) => {
@@ -11,7 +12,7 @@ const useFetch = (endpoint, query, delay = 0) => {
     method: "GET",
     url: `https://jsearch.p.rapidapi.com/${endpoint}`,
     headers: {
-      "X-RapidAPI-Key": '94165f163dmsh09fcc171eeed381p10e358jsn721a7e68b2c8',
+      "X-RapidAPI-Key": API_KEY,
       "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
     },
     params: { ...query },
