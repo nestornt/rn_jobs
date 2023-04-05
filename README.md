@@ -44,18 +44,4 @@ Note: Ensure your computer and phone are on the same Wi-Fi network for this step
 
 Alternatively, you can also launch the app in an iOS or Android simulator on your computer using the options provided by Expo CLI.
 
-## Expo Router Example
-
-Use [`expo-router`](https://expo.github.io/router) to build native navigation using files in the `app/` directory.
-
-### 🚀 How to use
-
-```sh
-npx create-react-native-app -t with-router
-```
-
-### 📝 Notes
-
-- [Expo Router: Docs](https://expo.github.io/router)
-- [Expo Router: Repo](https://github.com/expo/router)
-- [Request for Comments](https://github.com/expo/router/discussions/1)
+> :warning: **Important:** Please make sure to register in this API to obtain your personal key: https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch, then replace the variable "API_KEY" in the code for your api key, otherwise you won´t find any results.
