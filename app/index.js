@@ -6,13 +6,9 @@ import { COLORS, icons, images, SIZES } from "../constants";
 import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from "../components"
 
 const Home = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [data, setData] = useState([]);
-  const router = useRouter();
 
-  const handleLoaded = () => {
-    setIsLoaded(true);
-  }
+  const router = useRouter();
+  const [searchTerm, setSearchTerm] = useState("")
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.lightWhite}}>
@@ -36,9 +32,17 @@ const Home = () => {
             padding: SIZES.medium
           }}
         >
-          <Welcome />
-          <Popularjobs handleLoaded={handleLoaded} setData={setData}/>
-          {data && <Nearbyjobs data={data}/>}
+          <Welcome 
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            handleClick={() => {
+              if (searchTerm) {
+                router.push(`/search/${searchTerm}`)
+              }
+            }}
+          />
+          <Popularjobs/>
+          <Nearbyjobs/>
         </View>
       </ScrollView>
     </SafeAreaView>

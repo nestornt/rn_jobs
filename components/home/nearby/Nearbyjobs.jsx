@@ -6,20 +6,18 @@ import { COLORS} from '../../../constants'
 import NearbyJobCard from '../../common/cards/nearby/NearbyJobCard'
 import useFetch from "../../../hook/useFetch"
 
-const NearbyJobs = ({popularJobs}) => {
-  console.log("🚀 ~ file: Nearbyjobs.jsx:10 ~ NearbyJobs ~ data:", data)
+const NearbyJobs = ({}) => {
   
   const router = useRouter();
-  const { data, isLoading } = useFetch('search', {
+  const { data, isLoading, error } = useFetch('search', {
     query: 'React Native developer',
     num_pages: 1
   }, 1500);
 
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Nearby obs</Text>
+        <Text style={styles.headerTitle}>Nearby jobs</Text>
         <TouchableOpacity>
           <Text style={styles.headerBtn}>Show all</Text>
         </TouchableOpacity>
@@ -27,11 +25,13 @@ const NearbyJobs = ({popularJobs}) => {
       <View style={styles.cardsContainer}>
           {isLoading || !data ? (
             <ActivityIndicator size={'large'} colors={COLORS.primary} />
+          ) : error ? (
+            <Text>Something went wrong</Text>
           ) : (
             data?.map((job) => (
               <NearbyJobCard
                 job={job}
-                key={`nearby-job-${job?.job_id}`}
+                key={`nearby-job-${job.job_id}`}
                 handleNavigate={() => router.push(`/job-details/${job.job_id}`)}
               />
             ))

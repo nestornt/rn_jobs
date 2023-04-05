@@ -4,11 +4,11 @@ import { checkImageURL } from "../../../../utils"
 
 import styles from './nearbyjobcard.style'
 
-const NearbyJobCard = ({ job, handleCardPress }) => {
+const NearbyJobCard = ({ job, handleNavigate }) => {
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={handleCardPress}
+      onPress={ handleNavigate }
     >
       <TouchableOpacity style={styles.logoContainer}>
         <Image source={{ uri: checkImageURL(job?.employer_logo) 
